@@ -1,0 +1,139 @@
+.hide_jcarousel_to_be {
+  display: block;
+  height: 333px;
+  overflow: hidden;
+  width: 306px;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+  width: 100%;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden;
+    height: 300px;
+
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  306px;
+    height: 333px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+  float: left;
+  height: 100%;
+  width: 294px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+  margin-right: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+	position: absolute;
+	width: 26px;
+	height: 189px;
+	cursor: pointer;
+	top: 0px;
+	right: 0px;
+	margin-top: 4px;
+	background-image: url(images/next-horizontal.png);
+	background-repeat: no-repeat;
+	margin-right: 2px;
+	background-position: center center;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+	background-color: #FFF;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+	cursor: default;
+	background-image: url(images/disable.png);
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+	position: absolute;
+	width: 25px;
+	height: 189px;
+	cursor: pointer;
+	top: 0px;
+	right: 280px;
+	margin-top: 4px;
+	background-image: url(images/prev-horizontal.png);
+	background-repeat: no-repeat;
+	background-color: #FFF;
+	background-position: center center;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+	background-color: #FFF;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+	cursor: default;
+	background-image: url(images/disable.png);
+}
+
+.jcarousel-skin-tango .item-title {
+	font-size: 10pt;
+	font-weight: bold;
+	margin-top: 2px;
+}
+.jcarousel-skin-tango .item-title a{
+	color: #333;
+	text-decoration: none;
+}
+.jcarousel-skin-tango .item-excer {
+	color: #333;
+	margin-bottom: 8px;
+	text-align: justify;
+	height: 66px;
+}
+.jcarousel-skin-tango .item-meta{
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #f4f4f4;
+}
+.jcarousel-skin-tango .usuarios_widget{
+	color: #999;
+	text-align: center;
+	margin: 4px;
+	float: left;
+}
+.jcarousel-skin-tango .comuni_widget{
+	color: #999;
+	text-align: center;
+	margin: 4px;
+	float: right;
+}
+.jcarousel-skin-tango .item-avatar {
+	color: #333333;
+	height: 189px;
+	margin-top: 4px;
+	padding-left: 26px;
+	padding-right: 23px;
+	text-align: center;
+	border: none !important;
+	overflow: hidden;
+	background-color: #FFF;
+}
+.jcarousel-skin-tango .contenedor {
+	background-color: #FFF;
+	padding: 6px;
+	width: 296px;
+	height: 128px;
+	margin: 0px;
+}
+.jcarousel-skin-tango .w-avatar {
+}

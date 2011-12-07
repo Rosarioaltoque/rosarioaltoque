@@ -259,7 +259,7 @@ endif;
 
 /*registro de srcipts utilizados por el sitio entero*/
 
-wp_register_script('OpenLayers', '/wp-content/themes/rcd/js/OpenLayers.js');
+wp_register_script('OpenLayers', get_template_directory_uri().'/OpenLayers.js');
 
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.

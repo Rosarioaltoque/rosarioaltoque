@@ -28,9 +28,9 @@
                     <?php do_action( 'bp_directory_groups_item' ); ?>
                     <div id="rat-item-pie">
 				<?php do_action( 'bp_directory_groups_actions' ); ?>
-                    <img src="/wp-content/themes/rcd/images/ico_act_18.png" width="18" height="18" align="absmiddle" /> <?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?>  | 
-					<img src="/wp-content/themes/rcd/images/ico_comun_18.png" width="18" height="18" align="absmiddle" /> <?php bp_group_type(); ?>  | 
-                    <img src="/wp-content/themes/rcd/images/ico_user_18.png" width="9" height="18" align="absmiddle" /> <?php bp_group_member_count(); ?>
+                    <img src="<?php get_template_directory_uri()?>/images/ico_act_18.png" width="18" height="18" align="absmiddle" /> <?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?>  | 
+					<img src="<?php get_template_directory_uri()?>/images/ico_comun_18.png" width="18" height="18" align="absmiddle" /> <?php bp_group_type(); ?>  | 
+                    <img src="<?php get_template_directory_uri()?>/images/ico_user_18.png" width="9" height="18" align="absmiddle" /> <?php bp_group_member_count(); ?>
 			</div>
                 </div><!--rat-cont-text-->
             <br class="clear">

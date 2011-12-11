@@ -48,7 +48,7 @@ get_header(); ?>
 						echo '<div id="rat-item-descripcion">';
 						echo  $cat->description;
 						echo '</div>';
-         				echo '<div id="rat-item-pie"><img src="/wp-content/themes/rcd/images/ico_entr_18.png" width="18" height="18" align="absmiddle" />  ';
+         				echo '<div id="rat-item-pie"><img src="'.get_template_directory_uri().'/images/ico_entr_18.png" width="18" height="18" align="absmiddle" />  ';
 						echo $cat->count .' entrada';
 						if ($cat->count != 1) {
 							echo 's';

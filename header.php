@@ -58,7 +58,7 @@
 	<div id="header">
 
 		<div id="masthead">
-    	    <div id="logo"><a href="/index.php"><img src="/wp-content/themes/rcd/images/logo.png" width="197" height="130"></a></div><!-- #logo --><?php wp_footer(); ?>
+    	    <div id="logo"><a href="/index.php"><img src="<?php get_template_directory_uri()?>/images/logo.png" width="197" height="130"></a></div><!-- #logo --><?php wp_footer(); ?>
 			<div id="header-primary-menu">
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 			</div><!-- #header-primary-menu -->

@@ -466,7 +466,7 @@ class capaMapa {
 			$this->URLFeed = '/groups/'.$args['slug'].'/feed';
 		}
 		if ($this->tipo->nombre == 'Servicios') {
-			$this->URLFeed = '/wp-content/themes/rcd/feed-servicios.php?category_id='.$args['category_id'];
+			$this->URLFeed = get_template_directory_uri().'/feed-servicios.php?category_id='.$args['category_id'];
 		}
 		if ($this->tipo->nombre == 'Agrupador') {
 			$this->slug .= $this->padre->slug.$args['slug'].'_';
@@ -520,7 +520,7 @@ class divCapaMapa {
 			$divCapa .= '</div>'; // nodoCapaMapa
 			if (count($capa->slugHijos) > 0) {
 				$divCapa .= '<div id=nodoCapaMapa>';
-				$divCapa .= '<a href="javascript:mostrarNodo(\''.$capa->slug.'\')"><img id="img'.$capa->slug.'" class="nodo-capa-mapa" src="/wp-content/themes/rcd/images/nodo-capa-mapa-contraido.png"></a>';
+				$divCapa .= '<a href="javascript:mostrarNodo(\''.$capa->slug.'\')"><img id="img'.$capa->slug.'" class="nodo-capa-mapa" src="'.get_template_directory_uri().'/images/nodo-capa-mapa-contraido.png"></a>';
 				$divCapa .= '</div>'; // nodoCapaMapa
 			}
 			if ($capa->tipo->nombre == 'Agrupador') {

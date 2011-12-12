@@ -10,7 +10,7 @@
 	<div id="content-que-hay-al-toque" class="content-que-hay-al-toque-achicado">
 		<div class="page-title">
 			<div id="page-title-caption">Qu&eacute; hay al toque?</div>
-			<div id="boton-full-screen"><a href=javascript:ampliarMapa()><img src="<?php get_template_directory_uri()?>/images/key-fullscreen.png"></a></div>
+			<div id="boton-full-screen"><a href=javascript:ampliarMapa()><img src="<?php echo get_template_directory_uri()?>/images/key-fullscreen.png"></a></div>
 		</div><!-- #page-title -->
 		<?php echo getDivCapasMapa("capas-que-hay-al-toque") ?>
 		<div id="mapaPageQueHayAlToque"></div>
@@ -36,7 +36,7 @@
 				cb = jQuery('#cb_' + slugCapa);
 				if (cb.is(':checked')) {
 					if (capa['URLFeed']) {
-						var yelp = new OpenLayers.Icon("<?php get_template_directory_uri()?>/images/marker-mapa-rosario-al-toque.png", new OpenLayers.Size(22,22));
+						var yelp = new OpenLayers.Icon("<?php echo get_template_directory_uri()?>/images/marker-mapa-rosario-al-toque.png", new OpenLayers.Size(22,22));
 						var newl = new OpenLayers.Layer.GeoRSS( capa['slug'], capa['URLFeed'], {'icon':yelp, useFeedTitle: false, 'slug' : capa['slug']});
 						map.addLayer(newl);
 					}
@@ -58,12 +58,12 @@
 				img = jQuery('#img' + slugCapa);
 				individuoCapaMapa = img.parent().parent().parent();
 				familiaresCapaMapa = individuoCapaMapa.next();
-				if (img.attr('src') == '<?php get_template_directory_uri()?>/images/nodo-capa-mapa-expandido.png') {
-					img.attr('src', '<?php get_template_directory_uri()?>/images/nodo-capa-mapa-contraido.png');
+				if (img.attr('src') == '<?php echo get_template_directory_uri()?>/images/nodo-capa-mapa-expandido.png') {
+					img.attr('src', '<?php echo get_template_directory_uri()?>/images/nodo-capa-mapa-contraido.png');
 					familiaresCapaMapa.css('position', 'absolute');
 					familiaresCapaMapa.css('visibility', 'hidden');
 				} else {
-					img.attr('src', '<?php get_template_directory_uri()?>/images/nodo-capa-mapa-expandido.png');
+					img.attr('src', '<?php echo get_template_directory_uri()?>/images/nodo-capa-mapa-expandido.png');
 					familiaresCapaMapa.css('position', 'relative');
 					familiaresCapaMapa.css('visibility', 'visible');
 				}
@@ -73,7 +73,7 @@
 		<script>
 			jQuery.each(arregloCapaMapa, function() {
 				if (this['URLFeed']) {
-					var yelp = new OpenLayers.Icon("<?php get_template_directory_uri()?>/images/marker-mapa-rosario-al-toque.png", new OpenLayers.Size(22,22));
+					var yelp = new OpenLayers.Icon("<?php echo get_template_directory_uri()?>/images/marker-mapa-rosario-al-toque.png", new OpenLayers.Size(22,22));
 					var newl = new OpenLayers.Layer.GeoRSS( this['slug'], this['URLFeed'], {'icon':yelp, 'slug' : this['slug']});
 					map.addLayer(newl);
 				}

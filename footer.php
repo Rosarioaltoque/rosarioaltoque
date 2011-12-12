@@ -24,7 +24,7 @@
 			<?php if ( ! dynamic_sidebar( 'footer-right-widget-area' ) ) : ?>
 			<?php endif; // end footer right widget area ?>
 		</div><!-- #footer-right-widget-area -->
-		<div class="logos-footer"> <a href="http://www.rosario.gov.ar" target="_blank"><img src="<?php get_template_directory_uri()?>/images/logo_muni.gif" width="291" height="72" border="0" /></a><a href="http://www.polotecnologico.net/" target="_blank"><img src="/wp-content/themes/rcd/images/logo_polo.gif" width="291" height="49" border="0" /></a><a href="/rosario-ciudad-digital/"><img src="/wp-content/themes/rcd/images/logo_ciudaddigital.gif" width="291" height="58" border="0" /></a></div><!-- #logos-footer -->
+		<div class="logos-footer"> <a href="http://www.rosario.gov.ar" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/logo_muni.gif" width="291" height="72" border="0" /></a><a href="http://www.polotecnologico.net/" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/logo_polo.gif" width="291" height="49" border="0" /></a><a href="/rosario-ciudad-digital/"><img src="<?php echo get_template_directory_uri()?>/images/logo_ciudaddigital.gif" width="291" height="58" border="0" /></a></div><!-- #logos-footer -->
 	</div><!-- #footer -->
 </div><!-- #wrapper -->
 </body>

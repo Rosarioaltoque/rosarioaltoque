@@ -1,4 +1,4 @@
-/*
+ /*
 Theme Name: RCD
 Theme URI: http://wordpress.org/
 Description: RCD - Rosario al toque
@@ -309,6 +309,7 @@ a:hover {
 	border-bottom-style: solid;
 	border-top-color: #f4f4f4;
 	border-bottom-color: #f4f4f4;
+	font-size: 12px;
 }
 .entry-meta abbr,
 .entry-utility abbr {
@@ -432,6 +433,7 @@ body.page .edit-link {
 	border-top-width: 1px;
 	border-top-style: solid;
 	border-top-color: #f4f4f4;
+	font-size: 12px;
 }
 .entry-meta a,
 .entry-utility a {
@@ -977,11 +979,11 @@ div#content .padder {
 /* Estructuras */
 body {
 	margin: 0px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	background-image: url(images/header_b.jpg);
 	background-repeat: repeat-x;
 	background-position: top;
-	font-size: 8pt;
+	font-size: 13px;
 	line-height: 16px;
 }
 #wrapper {
@@ -1085,6 +1087,10 @@ li{
 	border-bottom-color: #f4f4f4;
 	padding: 8px;
 	overflow: hidden;
+	font-size: 12px;
+}
+.twitter-hash-tag-blank-widget li:hover{
+	background-color: #F4F4F4;
 }
 .twitter-hash-tag-blank-widget a{
 	text-decoration: none;
@@ -1152,7 +1158,7 @@ li{
 #footer-left-widget-area {
 	width: 202px;
 	float: left;
-	height: 120px;
+	height: 90px;
 	margin-right: 14px;
 	margin-top: 6px;
 	margin-left: 10px;
@@ -1160,14 +1166,15 @@ li{
 #footer-middle-widget-area {
 	width: 202px;
 	float: left;
-	height: 120px;
+	height: 90px;
 	margin-right: 14px;
 	margin-top: 6px;
+	font-size: 12px;
 }
 #footer-right-widget-area {
 	width: 202px;
 	float: left;
-	height: 120px;
+	height: 90px;
 	margin-right: 14px;
 	margin-top: 6px;
 }
@@ -1339,9 +1346,8 @@ li{
 	padding-left: 0px;
 }
 .logos-footer{
-	height: 100px;
-	width: 300px;
-	float: left;
+	width: 900px;
+	padding: 10px;
 }
 .foto-flickr-home{
 	float: left;
@@ -1471,7 +1477,7 @@ position: relative;
 	padding: 6px;
 	margin-top: 4px;
 	height: 85%;
-	overflow: auto;
+	overflow: visible;
 }
 #grupoFamiliarCapaMapa{
 }
@@ -1585,6 +1591,7 @@ select{
 	color: #999;
 	margin-top: 16px;
 	padding: 1px;
+	font-size: 12px;
 }
 #rat-avatar-106{
 	width: 106px;

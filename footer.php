@@ -11,8 +11,6 @@
  */
 ?>
 	</div><!-- #main -->
-	<link href="style.css" rel="stylesheet" type="text/css" />
-	
 	<div id="footer">
 		<div id="footer-left-widget-area">
 			<?php if ( ! dynamic_sidebar( 'footer-left-widget-area' ) ) : ?>

@@ -1,3 +1,6 @@
+
+var templateDirectoryUri = '/wp-content/themes/rosarioaltoque';
+
 function centraMapaLocacionRosario(map) {
 	centrarMapaSinLocacionRosario(map);
 	if (navigator.geolocation) {

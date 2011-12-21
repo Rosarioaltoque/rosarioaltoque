@@ -1621,10 +1621,17 @@ clear: both;
 	margin-top: 4px !important;
 	margin-bottom: 4px !important;
 }
+
 .iframe-admin-destacado {
 	width: 48px;
 	height: 48px;
 	border: 0px;
+}
+.jcarousel-skin-destacados .jcarousel-next-horizontal {
+  background-image: url("/wp-content/themes/rosarioaltoque/images/next-horizontal.png");
+}
+.jcarousel-skin-destacados .jcarousel-prev-horizontal {
+	background-image: url("/wp-content/themes/rosarioaltoque/images/prev-horizontal.png");
 }
 .besocial ul.center {
 	text-align: center;

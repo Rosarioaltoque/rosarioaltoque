@@ -2,8 +2,8 @@
 /**
  * Esta pagina es el servicio de Rosario al toque: Que hay al toque
  */
-	wp_enqueue_script('OpenLayers', get_template_directory_uri().'/OpenLayers.js');
-	wp_enqueue_script('RosarioAlToque', get_template_directory_uri().'/rosario-al-toque.js');
+	wp_enqueue_script('OpenLayers', get_template_directory_uri().'/js/OpenLayers.js');
+	wp_enqueue_script('RosarioAlToque', get_template_directory_uri().'/js/rosario-al-toque.js');
 	get_header();
 ?>
 <div id="container">

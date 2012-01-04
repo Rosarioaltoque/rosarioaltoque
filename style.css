@@ -339,7 +339,7 @@ a:hover {
 	padding: 0 24px;
 }
 .entry-content input {
-	margin: 0 0 24px 0;
+	margin: 0px;
 }
 .entry-content input.file,
 .entry-content input.button {
@@ -350,7 +350,7 @@ a:hover {
 	font-size: 12px;
 }
 .entry-content select {
-	margin: 0 0 24px 0;
+	margin: 0px;
 }
 .entry-content sup,
 .entry-content sub {

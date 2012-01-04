@@ -1636,3 +1636,7 @@ clear: both;
 .besocial ul.center {
 	text-align: center;
 }
+/*redimensionamiento de barra bp*/
+#wp-admin-bar{
+	width:650px !important;
+}

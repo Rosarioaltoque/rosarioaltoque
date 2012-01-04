@@ -78,7 +78,10 @@
 				<?php if ( bp_activity_user_can_delete() ) bp_activity_delete_link(); ?>
 
 				<?php do_action( 'bp_activity_entry_meta' ); ?>
-
+                
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php bp_activity_thread_permalink(); ?>" target="_blank" title="Compartir en Facebook"><img src="/wp-content/themes/rcd/images/social/16_bn_facebook.png" width="16" height="16" border="0" align="absmiddle" /></a>
+                
+                <a href="https://twitter.com/share?original_referer=<?php bp_activity_thread_permalink(); ?>" target="_blank" title="Compartir en Twitter"><img src="/wp-content/themes/rcd/images/social/16_bn_twitter.png" width="16" height="16" border="0" align="absmiddle" /></a>
 			</div>
 
 		<?php endif; ?>

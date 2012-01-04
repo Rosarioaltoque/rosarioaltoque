@@ -888,22 +888,11 @@ body.activity-permalink li.mini .activity-meta {
 	padding: 0;
 }
 .activity-list .activity-content {
-	margin-left: 70px;
 	margin-bottom: 15px;
 }
 body.activity-permalink .activity-list li .activity-content {
-	background: #fff;
-	border-bottom: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	font-size: 16px;
-	line-height: 150%;
-	min-height: 35px;
-	margin-left: 185px;
+	margin-left: 160px;
 	margin-right: 0;
-	padding: 15px;
 }
 body.activity-permalink .activity-list li .activity-header > p {
 	background: url( ../images/activity_arrow.gif ) top left no-repeat;
@@ -2096,15 +2085,16 @@ div#message-thread div.message-options {
 /*widget comunidades sidebar*/
 #group-sidebar-first-widget-area .item-options{
 	padding: 5px;
-	color: #666;
+	color: #CCC;
 	background-color: #FFF;
 	margin-top: 8px;
+	font-size: 11px;
+	font-weight: bold;
 }
 #group-sidebar-first-widget-area a{
 	text-decoration: none;
-	color: #666;
-	padding-right: 4px;
-/*	padding-left: 4px;*/
+	color: #999;
+	padding-right: 4px;/*	padding-left: 4px;*/
 }
 #group-sidebar-first-widget-area a:hover{
 	text-decoration: none;

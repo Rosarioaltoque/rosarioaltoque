@@ -1,6 +1,6 @@
 .hide_jcarousel_to_be {
   display: block;
-  height: 333px;
+  height: 348px;
   overflow: hidden;
   width: 306px;
 }
@@ -11,13 +11,12 @@
 
 .jcarousel-skin-tango .jcarousel-clip {
     overflow: hidden;
-    height: 300px;
 
 }
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
     width:  306px;
-    height: 333px;
+    height: 346px;
 }
 
 .jcarousel-skin-tango .jcarousel-item {
@@ -98,12 +97,13 @@
 	color: #333;
 	margin-bottom: 8px;
 	text-align: justify;
-	height: 66px;
+	height: 78px;
 }
 .jcarousel-skin-tango .item-meta{
 	border-top-width: 1px;
 	border-top-style: solid;
 	border-top-color: #f4f4f4;
+	height: 30px;
 }
 .jcarousel-skin-tango .usuarios_widget{
 	color: #999;
@@ -132,7 +132,7 @@
 	background-color: #FFF;
 	padding: 6px;
 	width: 296px;
-	height: 128px;
+	height: 150px;
 	margin: 0px;
 }
 .jcarousel-skin-tango .w-avatar {

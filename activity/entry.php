@@ -51,11 +51,11 @@
 
 		<?php do_action( 'bp_activity_entry_content' ); ?>
 
-		<?php if ( is_user_logged_in() ) : ?>
-
 			<div class="activity-meta">
-
-				<?php if ( bp_activity_can_comment() ) : ?>
+            
+<?php if ( is_user_logged_in() ) : ?>
+			
+            	<?php if ( bp_activity_can_comment() ) : ?>
 
 					<a href="<?php bp_get_activity_comment_link(); ?>" class="button acomment-reply bp-primary-action" id="acomment-comment-<?php bp_activity_id(); ?>"><?php printf( __( 'Comment <span>%s</span>', 'buddypress' ), bp_activity_get_comment_count() ); ?></a>
 
@@ -78,13 +78,13 @@
 				<?php if ( bp_activity_user_can_delete() ) bp_activity_delete_link(); ?>
 
 				<?php do_action( 'bp_activity_entry_meta' ); ?>
-                
+                <?php endif; ?>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=<?php bp_activity_thread_permalink(); ?>" target="_blank" title="Compartir en Facebook"><img src="/wp-content/themes/rcd/images/social/16_bn_facebook.png" width="16" height="16" border="0" align="absmiddle" /></a>
                 
                 <a href="https://twitter.com/share?original_referer=<?php bp_activity_thread_permalink(); ?>" target="_blank" title="Compartir en Twitter"><img src="/wp-content/themes/rcd/images/social/16_bn_twitter.png" width="16" height="16" border="0" align="absmiddle" /></a>
 			</div>
 
-		<?php endif; ?>
+		
 
 	</div>
 

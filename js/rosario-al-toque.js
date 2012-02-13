@@ -15,8 +15,10 @@ function centraMapaLocacionRosario(map) {
 				} else if (position.coords.latitude > -32.861132 || position.coords.latitude < -33.031981 || position.coords.longitude < -60.78495 || position.coords.longitude > -60.594406) {
 //					alert("Usted se encuentra fuera de Rosario (" + position.coords.latitude + ")");
 //					map.setCenter(new OpenLayers.LonLat(-60.647235, -32.949443), 16); //centro comercial cerca
+					map.addLayer(obtieneMarkerUstedEstaAqui());
 					centrarMapaSinLocacionRosario(map);
 				} else {
+					map.addLayer(obtieneMarkerUstedEstaAqui());
 					map.setCenter(new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude), 16);
 //					alert('Usted se encuentra en Rosario (' + position.coords.latitude + ' ' + position.coords.longitude + ').');
 				}
@@ -30,6 +32,12 @@ function centraMapaLocacionRosario(map) {
 		centrarMapaSinLocacionRosario(map);
 //		alert('Su navegador no soporta geolocacion.');
 	}
+}
+function obtieneMarkerUstedEstaAqui() {
+	var markerUstedEstaAqui = new OpenLayers.Layer.Markers( "usted-esta-aqui" );
+	var icon = new OpenLayers.Icon(templateDirectoryUri + "/images/marker-usted-esta-aqui.png");
+	markerUstedEstaAqui.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(position.coords.longitude,position.coords.latitude),icon));
+	return markerUstedEstaAqui;
 }
 function centrarMapaSinLocacionRosario(map) {
 	map.setCenter(new OpenLayers.LonLat(-60.675774, -32.947606), 14); //todo rosario lejos
@@ -49,7 +57,7 @@ function getMapaRosarioAlToque(idDivMapa) {
 						map.addLayer(wms_santafe);*/
 
 						var wms_rosario = new OpenLayers.Layer.WMS(
-							"Infomapa Rosario"
+							"Servicio de mapas de Municipalidad de Rosario"
 							,"http://www.rosario.gov.ar/wms/planobase"
 							,{layers: "av_circunvalacion,manzanas,manzanas_no_regularizada,espacios_verdes,hidrografia,avenidas_y_boulevares,segmentos_de_calle,sentidos_de_calle,via_ferroviaria,islas_del_parana,bancos_de_arena,autopistas,nombres_de_calles,numeracion_de_calles,limite_municipio"}
 //							,{layers: "sin_manzanas,canteros,av_circunvalacion,manzanas,manzanas_no_regularizada,parcelas,espacios_verdes,hidrografia,avenidas_y_boulevares,segmentos_de_calle,sentidos_de_calle,via_ferroviaria,islas_del_parana,bancos_de_arena,autopistas,nombres_de_calles,numeracion_de_calles,numeros_de_manzana,limite_municipio,puentes"}

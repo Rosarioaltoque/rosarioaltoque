@@ -472,6 +472,18 @@ class capaMapa {
 		} else {
 			$this->slug = $this->tipo->slug.'-'.$args['slug'];
 		}
+		setlocale(LC_ALL, "en_US.utf8");
+		$this->slug = iconv("utf-8", "ascii//TRANSLIT", $this->slug);
+		$this->iconURL = '';
+		if (file_exists(get_theme_root().'/'.get_template().'/images/marker-'.$this->slug.'.png')) {
+			$this->iconURL = get_template_directory_uri().'/images/marker-'.$this->slug.'.png';
+		} else {
+			if ($this->padre) {
+				$this->iconURL = $this->padre->iconURL;
+			} else {
+				$this->iconURL = get_template_directory_uri().'/images/marker-mapa-rosario-al-toque.png';
+			}
+		}
 		$this->slugHijos = array();
 		if ($this->padre) {
 			$this->padre->insertarSlugHijo($this->slug);

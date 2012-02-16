@@ -67,8 +67,12 @@
 			function mostrarCapaChecked(capa) {
 				if (capa['tipo']['slug'] == 'servicio') {
 					var layerCapaServicio = new OpenLayers.Layer.Markers( capa['nombre'] , {'slug': capa['slug']});
+					var iconURL = templateDirectoryUri + "/images/marker-mapa-rosario-al-toque.png";
+					if (capa['iconURL'] != '') {
+						iconURL = capa['iconURL'];
+					}
 					jQuery.each(capa.servicios, function() {
-						var icon = new OpenLayers.Icon(templateDirectoryUri + "/images/marker-mapa-rosario-al-toque.png");
+						var icon = new OpenLayers.Icon(iconURL);
 						markerServicio = new OpenLayers.Marker(new OpenLayers.LonLat(this['longitud'],this['latitud']),icon);
 						var popupHTML = this['popupHTML'];
 						var longitud = this['longitud'];
@@ -78,7 +82,11 @@
 					});
 					map.addLayer(layerCapaServicio);
 				} else if (capa['URLFeed']) {
-					var yelp = new OpenLayers.Icon("<?php echo get_template_directory_uri()?>/images/marker-mapa-rosario-al-toque.png", new OpenLayers.Size(22,22));
+					var iconURL = templateDirectoryUri + "/images/marker-mapa-rosario-al-toque.png";
+					if (capa['iconURL'] != '') {
+						iconURL = capa['iconURL'];
+					}
+					var yelp = new OpenLayers.Icon(iconURL, new OpenLayers.Size(22,22));
 					var newl = new OpenLayers.Layer.GeoRSS( capa['slug'], capa['URLFeed'], {'icon':yelp, 'slug' : capa['slug']});
 					map.addLayer(newl);
 				}

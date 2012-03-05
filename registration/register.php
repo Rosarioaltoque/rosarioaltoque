@@ -73,7 +73,7 @@
 
 								<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
 
-									<label for="<?php bp_the_profile_field_input_name() ?>"><?php bp_the_profile_field_name() ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'buddypress' ) ?><?php endif; ?></label>
+									<label for="<?php bp_the_profile_field_input_name() ?>"><?php _e( bp_get_the_profile_field_name(), 'buddypress' ) ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'buddypress' ) ?><?php endif; ?></label>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ) ?>
 									<input type="text" name="<?php bp_the_profile_field_input_name() ?>" id="<?php bp_the_profile_field_input_name() ?>" value="<?php bp_the_profile_field_edit_value() ?>" />
 

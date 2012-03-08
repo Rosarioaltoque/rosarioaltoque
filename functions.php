@@ -466,17 +466,29 @@ class capaMapa {
 			$this->URLFeed = '/groups/'.$args['slug'].'/feed';
 		}
 		if ($this->tipo->nombre == 'Servicios') {
-			$this->URLFeed = get_template_directory_uri().'/feed-servicios.php?category_id='.$args['category_id'];
 		}
 		if ($this->tipo->nombre == 'Agrupador') {
 			$this->slug .= $this->padre->slug.$args['slug'].'_';
 		} else {
 			$this->slug = $this->tipo->slug.'-'.$args['slug'];
 		}
+		setlocale(LC_ALL, "en_US.utf8");
+		$this->slug = iconv("utf-8", "ascii//TRANSLIT", $this->slug);
+		$this->iconURL = '';
+		if (file_exists(get_theme_root().'/'.get_template().'/images/marker-'.$this->slug.'.png')) {
+			$this->iconURL = get_template_directory_uri().'/images/marker-'.$this->slug.'.png';
+		} else {
+			if ($this->padre) {
+				$this->iconURL = $this->padre->iconURL;
+			} else {
+				$this->iconURL = get_template_directory_uri().'/images/marker-mapa-rosario-al-toque.png';
+			}
+		}
 		$this->slugHijos = array();
 		if ($this->padre) {
 			$this->padre->insertarSlugHijo($this->slug);
 		}
+		$this->servicios = array();
 	}
 	function insertarSlugHijo($slug) {
 		$this->slugHijos[] = $slug;
@@ -504,7 +516,8 @@ class divCapaMapa {
 		return null;
 	}
 	function getHTML() {
-		$html .= '<script>var arregloCapaMapa = eval(unescape(\'('.urlencode(json_encode($this->capas)).')\'))	</script>';
+//		$html .= '<script>var arregloCapaMapa = eval(unescape(\'('.urlencode(json_encode($this->capas)).')\'))	</script>';
+		$html .= '<script>var arregloCapaMapa = eval(\'('.json_encode($this->capas).')\')	</script>';
 		$html .= '<div id="'.$this->idDivCapas.'">';
 		$html .= '<form id="formCapas" name="formCapas">';
 		$html .= $this->getDivCapa($this->getCapaBySlug('_'));
@@ -578,17 +591,70 @@ function getArregloCapaMapa() {
 	$capaServicios = new capaMapa(array('nombre' => 'Servicios', 'tipo' => $tipoAgrupador, 'padre' => $capaRaiz, 'slug' => 'servicios'));
 	$arregloCapaMapa[] = $capaServicios;
 	global $wpdb;
+	$arregloCategoriasServicio = array();
+	$categoriaServicio = new categoriaServicio(array('slug' => '', 'category_id' => 0));
+	$servicios = $wpdb->get_results("SELECT wp_posts.ID as post_id, wp_sd_listings.listing_id, wp_sd_listings.name, wp_sd_categories.category_id, wp_sd_categories.category, wp_sd_listings.latitud, wp_sd_listings.longitud, wp_sd_listings.company_url, wp_sd_listings.company_description FROM wp_sd_listings left join wp_sd_categories on wp_sd_categories.category_id = wp_sd_listings.category_id LEFT JOIN wp_posts on wp_posts.guid = wp_sd_listings.image_url  WHERE wp_sd_listings.status = 1 and wp_sd_categories.hide !=1 and wp_sd_listings.latitud <> 0 and wp_sd_listings.longitud <> 0 ORDER BY wp_sd_categories.category ASC",ARRAY_A);
+	foreach($servicios as $servicio) {
+		if ($categoriaServicio->category_id != @$servicio["category_id"]) {
+			$arregloCategoriasServicio[] = $categoriaServicio;
+			$slug = strtolower(@$servicio["category"]);
+			$slug = str_replace(" ", "-", $slug);
+			$categoriaServicio = new categoriaServicio(array('slug' => $slug, 'category_id' => @$servicio["category_id"]));
+		}
+		$aref = '<a target=_blank href=/wp-content/plugins/servicios-digitales/requests.php?action=GoListing&listing_id='.@$servicio["listing_id"].'&company_url='.@$servicio["company_url"].'>';
+		$popupHTML = '';
+		$src = wp_get_attachment_image_src( @$servicio["post_id"], 'Miniatura servicios', true );
+		if ($src) {
+			$popupHTML .= '<div>'.$aref.'<img border=0 src='.$src[0].'></a></div>';
+		}
+		$popupHTML .= '<div>';
+		$popupHTML .= $aref.@$servicio["name"].'</a>';
+		$popupHTML .= '</div>';
+		$popupHTML .= '<div>';
+		$popupHTML .= @$servicio["company_description"];
+		$popupHTML .= '</div>';
+		
+		$oservicio = new servicio(array('nombre' => @$servicio["name"], 'longitud' => @$servicio["longitud"], 'latitud' => @$servicio["latitud"], 'popupHTML' => $popupHTML));
+		$categoriaServicio->insertarServicio($oservicio);
+	}
+	$arregloCategoriasServicio[] = $categoriaServicio;
 	$categories = $wpdb->get_results("SELECT * FROM wp_sd_categories WHERE hide !=1 ORDER BY category ASC",ARRAY_A);
 	foreach($categories as $category) {
 		$slug = strtolower(@$category["category"]);
 		$slug = str_replace(" ", "-", $slug);
 		$capaCategoria = new capaMapa(array('nombre' => @$category["category"], 'tipo' => $tipoServicios, 'padre' => $capaServicios, 'slug' => $slug, 'category_id' => @$category["category_id"]));
+		foreach ($arregloCategoriasServicio as $categoriaServicio) {
+			if ($categoriaServicio->slug == $slug) {
+				$capaCategoria->servicios = $categoriaServicio->servicios;
+			}
+		}
 		$arregloCapaMapa[] = $capaCategoria;
 	}
 
 //	$arregloCapaMapa = array ($capaAlertas, $arregloCapasAlertas, $capaComunidades, $arregloCapasComunidades, $capaServicios);
 
 	return $arregloCapaMapa;
+}
+
+class categoriaServicio {
+	function __construct($args = array()) {
+		$this->category_id = $args['category_id'];
+		$this->nombre = $args['nombre'];
+		$this->slug = $args['slug'];
+		$this->servicios = array();
+	}
+	function insertarServicio($servicio) {
+		$this->servicios[] = $servicio;
+	}
+}
+
+class servicio {
+	function __construct($args = array()) {
+		$this->nombre = $args['nombre'];
+		$this->latitud = $args['latitud'];
+		$this->longitud = $args['longitud'];
+		$this->popupHTML = $args['popupHTML'];
+	}
 }
 
 if ( !defined( 'BP_AVATAR_FULL_WIDTH' ) )

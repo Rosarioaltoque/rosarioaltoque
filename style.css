@@ -1616,6 +1616,18 @@ select{
 .clear{
 clear: both;
 }
+#register-page{
+	background-color: #FFF;
+}
+#tycondiciones{
+	height: 70px;
+	border: 1px solid #999;
+	float: left;
+	width: 96%;
+	font-size: 12px;
+	color: #666;
+	padding: 8px;
+}
 /**/
 .socialmedia-buttons{
 	background-color: #FFF;
@@ -1642,3 +1654,19 @@ clear: both;
 #wp-admin-bar{
 	width:650px !important;
 }
+/*login*/
+#LoginWithAjax{
+	background-color: #FFF !important;
+}
+.username_label{
+	text-align: right !important;
+    adding-right: 0px !important;
+	padding-right: 0px !important;
+}
+/*facebook*/
+.fbConnectWidgetTopmost{
+    border-style: none !important;
+}
+.transparent_widget{
+	background-color:#0F0 !important;
+	}

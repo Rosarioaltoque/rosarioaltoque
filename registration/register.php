@@ -41,7 +41,6 @@
 					<label for="signup_email"><?php _e( 'Email Address', 'buddypress' ) ?> <?php _e( '(required)', 'buddypress' ) ?></label>
 					<?php do_action( 'bp_signup_email_errors' ) ?>
 					<input type="text" name="signup_email" id="signup_email" value="<?php bp_signup_email_value() ?>" />
-
 					<label for="signup_password"><?php _e( 'Choose a Password', 'buddypress' ) ?> <?php _e( '(required)', 'buddypress' ) ?></label>
 					<?php do_action( 'bp_signup_password_errors' ) ?>
 					<input type="password" name="signup_password" id="signup_password" value="" />
@@ -207,16 +206,17 @@
 
 						</div>
 
-					</div><!-- #blog-details-section -->
+					</div>
+					<!-- #blog-details-section -->
 
 					<?php do_action( 'bp_after_blog_details_fields' ) ?>
 
 				<?php endif; ?>
 
 				<?php do_action( 'bp_before_registration_submit_buttons' ) ?>
-
-				<div class="submit">
-					<input type="submit" name="signup_submit" id="signup_submit" value="<?php _e( 'Complete Sign Up', 'buddypress' ) ?>" />
+<div id="tycondiciones">Términos y Condiciones</div>
+            <div class="submit">
+					<input type="submit" name="signup_submit" id="signup_submit" value="<?php _e( 'Complete Sign Up', 'buddypress' ) ?>" /><br /><br />
 				</div>
 
 				<?php do_action( 'bp_after_registration_submit_buttons' ) ?>
@@ -226,8 +226,7 @@
 			<?php endif; // request-details signup step ?>
 
 			<?php if ( 'completed-confirmation' == bp_get_current_signup_step() ) : ?>
-
-				<h2><?php _e( 'Sign Up Complete!', 'buddypress' ) ?></h2>
+			<h2><?php _e( 'Sign Up Complete!', 'buddypress' ) ?></h2>
 
 				<?php do_action( 'template_notices' ) ?>
 				<?php do_action( 'bp_before_registration_confirmed' ) ?>
@@ -243,7 +242,6 @@
 			<?php endif; // completed-confirmation signup step ?>
 
 			<?php do_action( 'bp_custom_signup_steps' ) ?>
-
 			</form>
 
 		</div>
@@ -251,11 +249,13 @@
 		<?php do_action( 'bp_after_register_page' ) ?>
 
 		</div><!-- .padder -->
-	</div><!-- #content -->
+	</div>
+	<!-- #content -->
 
 	<?php get_sidebar( 'buddypress' ) ?>
 
-	<script type="text/javascript">
+<?php get_footer( 'buddypress' ) ?>
+<script type="text/javascript">
 		jQuery(document).ready( function() {
 			if ( jQuery('div#blog-details').length && !jQuery('div#blog-details').hasClass('show') )
 				jQuery('div#blog-details').toggle();
@@ -265,5 +265,3 @@
 			});
 		});
 	</script>
-
-<?php get_footer( 'buddypress' ) ?>

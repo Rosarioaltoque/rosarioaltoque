@@ -214,10 +214,10 @@
 				<?php endif; ?>
 
 				<?php do_action( 'bp_before_registration_submit_buttons' ) ?>
-
+<div id=tycondiciones>T&eacute;rminos y Condiciones</div>
 				<div class="submit">
 					<input type="submit" name="signup_submit" id="signup_submit" value="<?php _e( 'Complete Sign Up', 'buddypress' ) ?>" />
-				</div>
+				<br></div><br><br><br>
 
 				<?php do_action( 'bp_after_registration_submit_buttons' ) ?>
 

@@ -24,10 +24,10 @@ function centraMapaLocacionRosario(map) {
 					if (map.divMensajeMapa) {
 						map.divMensajeMapa.text("Usted se encuentra fuera de Rosario, en " + position.coords.latitude + ", " + position.coords.longitude);
 					}
-					map.addLayer(obtieneMarkerUstedEstaAqui());
+					map.addLayer(obtieneMarkerUstedEstaAqui(position));
 					centrarMapaSinLocacionRosario(map);
 				} else {
-					map.addLayer(obtieneMarkerUstedEstaAqui());
+					map.addLayer(obtieneMarkerUstedEstaAqui(position));
 					map.setCenter(new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude), 16);
 					if (map.divMensajeMapa) {
 						map.divMensajeMapa.text("Usted se encuentra en Rosario, en " + position.coords.latitude + ", " + position.coords.longitude);
@@ -37,7 +37,7 @@ function centraMapaLocacionRosario(map) {
 			,function(error) {
 				if (map.divMensajeMapa) {
 					if (error.code == 2) {
-						map.divMensajeMapa.text("Su proveedor devolvió un error al proveer su ubicación.");
+						map.divMensajeMapa.text("Su equipo devolvió un error al proveer su ubicación.");
 					} else {
 						map.divMensajeMapa.text(error.message);
 					}
@@ -52,10 +52,10 @@ function centraMapaLocacionRosario(map) {
 		}
 	}
 }
-function obtieneMarkerUstedEstaAqui() {
+function obtieneMarkerUstedEstaAqui(oPos) {
 	var markerUstedEstaAqui = new OpenLayers.Layer.Markers( "usted-esta-aqui" );
 	var icon = new OpenLayers.Icon(templateDirectoryUri + "/images/marker-usted-esta-aqui.png");
-	markerUstedEstaAqui.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(position.coords.longitude,position.coords.latitude),icon));
+	markerUstedEstaAqui.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(oPos.coords.longitude,oPos.coords.latitude),icon));
 	return markerUstedEstaAqui;
 }
 function centrarMapaSinLocacionRosario(map) {

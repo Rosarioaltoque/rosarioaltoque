@@ -200,3 +200,30 @@ map.addLayers([layer, vector]);*/
 	firstGeolocation = true;
 	geolocate.activate();
 }
+function mostrarCapaChecked(capa) {
+	if (capa['tipo']['slug'] == 'servicio') {
+		var layerCapaServicio = new OpenLayers.Layer.Markers( capa['nombre'] , {'slug': capa['slug']});
+		var iconURL = templateDirectoryUri + "/images/marker-mapa-rosario-al-toque.png";
+		if (capa['iconURL'] != '') {
+			iconURL = capa['iconURL'];
+		}
+		jQuery.each(capa.servicios, function() {
+			var icon = new OpenLayers.Icon(iconURL);
+			markerServicio = new OpenLayers.Marker(new OpenLayers.LonLat(this['longitud'],this['latitud']),icon);
+			var popupHTML = this['popupHTML'];
+			var longitud = this['longitud'];
+			var latitud = this['latitud'];
+			markerServicio.events.register('mousedown', markerServicio, function(evt) { popup = new OpenLayers.Popup('popupServicio',new OpenLayers.LonLat(longitud,latitud),new OpenLayers.Size(200,200),popupHTML, true);map.addPopup(popup); OpenLayers.Event.stop(evt); });
+			layerCapaServicio.addMarker(markerServicio);
+		});
+		map.addLayer(layerCapaServicio);
+	} else if (capa['URLFeed']) {
+		var iconURL = templateDirectoryUri + "/images/marker-mapa-rosario-al-toque.png";
+		if (capa['iconURL'] != '') {
+			iconURL = capa['iconURL'];
+		}
+		var yelp = new OpenLayers.Icon(iconURL, new OpenLayers.Size(22,22));
+		var newl = new OpenLayers.Layer.GeoRSS( capa['slug'], capa['URLFeed'], {'icon':yelp, 'slug' : capa['slug']});
+		map.addLayer(newl);
+	}
+}

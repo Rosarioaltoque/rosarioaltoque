@@ -1450,7 +1450,7 @@ position: relative;
 .content-que-hay-al-toque-achicado{
 /*	position:relative;*/
 	width: 960px;
-	height: 350px;
+	height: 374px;
 	margin-bottom: 8px;
 }
 .content-que-hay-al-toque-agrandado{
@@ -1459,6 +1459,10 @@ position: relative;
 	height: 97%;
 	top: 0px;
 	left: 0px;
+}
+#mensajeMapaPageQueHayAlToque{
+	height: 16px;
+	float: left;
 }
 #mapaWidgetQueHayAlToque{
 	height: 150px;

@@ -4,33 +4,52 @@ var templateDirectoryUri = '/wp-content/themes/rosarioaltoque';
 function centraMapaLocacionRosario(map) {
 	centrarMapaSinLocacionRosario(map);
 	if (navigator.geolocation) {
+		if (map.divMensajeMapa) {
+			map.divMensajeMapa.text("Su navegador soporta geolocación, iniciando obtención de datos ...");
+		}
 		navigator.geolocation.getCurrentPosition(
 			function(position) {  
 				if (position.coords.latitude == -32.950741 && position.coords.longitude == -60.6665) {
 					centrarMapaSinLocacionRosario(map);
-//					alert("Proveedor desconocido no provee su ubicacion");
+					if (map.divMensajeMapa) {
+						map.divMensajeMapa.text("Su proveedor de Internet no provee su ubicacion");
+					}
 				} else if (position.coords.latitude == -32.950741 && position.coords.longitude == -60.66649999999999) {
 					centrarMapaSinLocacionRosario(map);
-//					alert("Fibertel no provee su ubicacion");
+					if (map.divMensajeMapa) {
+						map.divMensajeMapa.text("Su proveedor de Internet (Fibertel) no provee su ubicacion");
+					}
 				} else if (position.coords.latitude > -32.861132 || position.coords.latitude < -33.031981 || position.coords.longitude < -60.78495 || position.coords.longitude > -60.594406) {
-//					alert("Usted se encuentra fuera de Rosario (" + position.coords.latitude + ")");
 //					map.setCenter(new OpenLayers.LonLat(-60.647235, -32.949443), 16); //centro comercial cerca
+					if (map.divMensajeMapa) {
+						map.divMensajeMapa.text("Usted se encuentra fuera de Rosario, en " + position.coords.latitude + ", " + position.coords.longitude);
+					}
 					map.addLayer(obtieneMarkerUstedEstaAqui());
 					centrarMapaSinLocacionRosario(map);
 				} else {
 					map.addLayer(obtieneMarkerUstedEstaAqui());
 					map.setCenter(new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude), 16);
-//					alert('Usted se encuentra en Rosario (' + position.coords.latitude + ' ' + position.coords.longitude + ').');
+					if (map.divMensajeMapa) {
+						map.divMensajeMapa.text("Usted se encuentra en Rosario, en " + position.coords.latitude + ", " + position.coords.longitude);
+					}
 				}
 			}
-			,function() {
-//				alert('no funciono');
+			,function(error) {
+				if (map.divMensajeMapa) {
+					if (error.code == 2) {
+						map.divMensajeMapa.text("Su proveedor devolvió un error al proveer su ubicación.");
+					} else {
+						map.divMensajeMapa.text(error.message);
+					}
+				}
 				centrarMapaSinLocacionRosario(map);
 			}
 		);
 	} else {
 		centrarMapaSinLocacionRosario(map);
-//		alert('Su navegador no soporta geolocacion.');
+		if (map.divMensajeMapa) {
+			map.divMensajeMapa.text("Su navegador no soporta geolocación.");
+		}
 	}
 }
 function obtieneMarkerUstedEstaAqui() {
@@ -42,12 +61,15 @@ function obtieneMarkerUstedEstaAqui() {
 function centrarMapaSinLocacionRosario(map) {
 	map.setCenter(new OpenLayers.LonLat(-60.675774, -32.947606), 14); //todo rosario lejos
 }
-function getMapaRosarioAlToque(idDivMapa) {
+function getMapaRosarioAlToque(idDivMapa, divMensajeMapa) {
 						var options = {
 							numZoomLevels: 25
 							,allOverlays: true
 						}
 						var map = new OpenLayers.Map(idDivMapa, options);
+						if (divMensajeMapa) {
+							map.divMensajeMapa = divMensajeMapa;
+						}
 						
 /*						var wms_santafe = new OpenLayers.Layer.WMS(
 							"IDESF",

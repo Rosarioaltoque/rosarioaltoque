@@ -14,6 +14,7 @@
 		</div><!-- #page-title -->
 		<?php echo getDivCapasMapa("capas-que-hay-al-toque") ?>
 		<div id="mapaPageQueHayAlToque"></div>
+		<div id="mensajeMapaPageQueHayAlToque"></div>
 		<script>
 			function ampliarMapa() {
 				if (jQuery("#content-que-hay-al-toque").hasClass('content-que-hay-al-toque-agrandado')) {
@@ -92,7 +93,9 @@
 				}
 			}
 		</script>
-		<script>var map = getMapaRosarioAlToque("mapaPageQueHayAlToque")</script>
+		<script>
+			var map = getMapaRosarioAlToque("mapaPageQueHayAlToque", jQuery('#mensajeMapaPageQueHayAlToque'));
+		</script>
 		<script>
 			jQuery.each(arregloCapaMapa, function() {
 				mostrarCapaChecked(this);

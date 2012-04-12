@@ -208,13 +208,28 @@ function mostrarCapaChecked(capa) {
 			iconURL = capa['iconURL'];
 		}
 		jQuery.each(capa.servicios, function() {
+			var i = 0;
 			var icon = new OpenLayers.Icon(iconURL);
 			markerServicio = new OpenLayers.Marker(new OpenLayers.LonLat(this['longitud'],this['latitud']),icon);
 			var popupHTML = this['popupHTML'];
 			var longitud = this['longitud'];
 			var latitud = this['latitud'];
-			markerServicio.events.register('mousedown', markerServicio, function(evt) { popup = new OpenLayers.Popup('popupServicio',new OpenLayers.LonLat(longitud,latitud),new OpenLayers.Size(200,200),popupHTML, true);map.addPopup(popup); OpenLayers.Event.stop(evt); });
+			var popup = new OpenLayers.Popup(
+					'OpenLayers.popupServicio_' + i
+					,new OpenLayers.LonLat(longitud,latitud)
+					,new OpenLayers.Size(200,200)
+					,popupHTML
+					, true
+			);
+			markerServicio.events.register('click', markerServicio, function(evt) { 
+				for(var c=0,d=map.popups.length;c<d;c++){
+					map.removePopup(map.popups[c]);
+				}
+				map.addPopup(popup);
+				OpenLayers.Event.stop(evt);
+			});
 			layerCapaServicio.addMarker(markerServicio);
+			i++;
 		});
 		map.addLayer(layerCapaServicio);
 	} else if (capa['URLFeed']) {

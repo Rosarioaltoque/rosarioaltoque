@@ -1469,9 +1469,18 @@ position: relative;
 	color: #666;
 }
 #mapaWidgetQueHayAlToque{
-	height: 150px;
+	height: 160px;
 	border: 1px solid #ccc;
 	margin-top: 4px;
+}
+#piemapaWidgetQueHayAlToque{
+	background-color: #B6B6B6;
+	padding: 4px;
+	font-size: 11px;
+	color: #333;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
 }
 #mapaPageQueHayAlToque{
 	width: 73%;
@@ -1678,3 +1687,8 @@ clear: both;
 .transparent_widget{
 	background-color:#0F0 !important;
 	}
+	
+/*flickr widget*/
+.simple-flickr-photostream{
+	height:260px !important
+}
